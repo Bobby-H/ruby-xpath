@@ -1,27 +1,43 @@
-require_relative 'modules/human'
-require_relative 'modules/smart'
-
-module Animal
-  def make_sound
-    puts 'Grrr'
-  end
+def reverse(x)
+    if x < 0 && x.bit_length < 31
+        positive_num = x * -1
+        ('-'+positive_num.to_s.reverse).to_i
+    elsif x > 0 && x.bit_length < 31
+        x.to_s.reverse.to_i
+    else
+        return 0
+    end
 end
 
-class Dog
-  include Animal
-end
+puts reverse(1534236469)
+puts reverse(-2147483412)
+puts reverse(-123)
+puts reverse(123)
 
-rover = Dog.new
-rover.make_sound
-
-class Scientist
-  include Human
-  prepend Smart
-
-  def act_smart
-    return 'E=mc**2'
-  end
-end
+#require_relative 'modules/human'
+#require_relative 'modules/smart'
+#
+#module Animal
+#  def make_sound
+#    puts 'Grrr'
+#  end
+#end
+#
+#class Dog
+#  include Animal
+#end
+#
+#rover = Dog.new
+#rover.make_sound
+#
+#class Scientist
+#  include Human
+#  prepend Smart
+#
+#  def act_smart
+#    return 'E=mc**2'
+#  end
+#end
 
 einstein = Scientist.new
 einstein.name = 'Albert'
