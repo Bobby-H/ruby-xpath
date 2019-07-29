@@ -1,7 +1,38 @@
-first_name = 'Bobby'
-last_name = 'Hutter'
+require_relative 'modules/human'
+require_relative 'modules/smart'
 
-full_name = "#{first_name} #{last_name}"
+module Animal
+  def make_sound
+    puts 'Grrr'
+  end
+end
+
+class Dog
+  include Animal
+end
+
+rover = Dog.new
+rover.make_sound
+
+class Scientist
+  include Human
+  prepend Smart
+
+  def act_smart
+    return 'E=mc**2'
+  end
+end
+
+einstein = Scientist.new
+einstein.name = 'Albert'
+
+puts einstein.name
+einstein.run
+puts einstein.name + ' says ' + einstein.act_smart
+#first_name = 'Bobby'
+#last_name = 'Hutter'
+
+#full_name = "#{first_name} #{last_name}"
 
 #puts "\"a\".equal?(\"a\") : " + ("a".equal?"a").to_s
 #puts full_name.upcase
@@ -13,8 +44,8 @@ full_name = "#{first_name} #{last_name}"
 #puts full_name.rstrip.chop.rstrip
 #puts full_name.chop.strip
 #puts full_name.chop
-name_array = full_name.split(//)
-puts name_array
+#name_array = full_name.split(//)
+#puts name_array
 #age = 12
 #
 #def check_age(age)
